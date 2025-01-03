@@ -1,4 +1,4 @@
-export {request, login, register};
+export {request, login, register, getUser, updateUser};
 const BASE_URL = 'http://localhost:3001';
 
 const request = async (
@@ -53,4 +53,12 @@ const login = (username, password) => {
 };
 const register = (username, password) => {
     return request('/register', 'POST', {username, password}, true);
+}
+
+const getUser = (id) => {
+    return request(`/user/${id}`);
+}
+
+const updateUser = (username, password) => {
+    return request(`/user`, 'PUT', {username, password});
 }

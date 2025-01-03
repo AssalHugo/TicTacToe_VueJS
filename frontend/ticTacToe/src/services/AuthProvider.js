@@ -1,3 +1,5 @@
+//On import la bibliothèque jwt-decode pour décoder le token JWT
+import { jwtDecode } from "jwt-decode";
 const isAuthenticated = () => {
     return localStorage.getItem('token') !== null;
 }
@@ -15,9 +17,7 @@ const setToken = (token) => {
 const getUserIdentity = () => {
     let token = localStorage.getItem('token');
     if (token) {
-        let payload = token.split('.')[1];
-        let decoded = atob(payload);
-        return JSON.parse(decoded);
+        return jwtDecode(token);
     }
 }
 

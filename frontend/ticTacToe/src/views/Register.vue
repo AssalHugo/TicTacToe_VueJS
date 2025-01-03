@@ -3,7 +3,7 @@ import {register} from "@/services/httpClient.js";
 export default {
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       confirmPassword: "",
       error: null,
@@ -15,7 +15,7 @@ export default {
         this.error = "Les mots de passe ne correspondent pas";
         return;
       }
-      register(this.email, this.password)
+      register(this.username, this.password)
         .then(() => {
           this.$router.push("/login");
         })
@@ -33,8 +33,8 @@ export default {
       <h1 class="text-2xl font-bold mb-6 text-center">Page d'inscription</h1>
       <form @submit.prevent="handleRegister">
         <div class="mb-4">
-          <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-          <input type="email" id="email" v-model="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+          <label for="username" class="block text-gray-700 font-bold mb-2">Nom d'utilisateur</label>
+          <input type="text" id="username" v-model="username" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"/>
         </div>
         <div class="mb-4">
           <label for="password" class="block text-gray-700 font-bold mb-2">Mot de passe</label>
@@ -49,6 +49,7 @@ export default {
         </div>
         <div v-if="error" class="text-red-500 text-center">{{ error }}</div>
       </form>
+      <router-link to="/login" class="text-blue-500 hover:underline"><p class="text-center">Connexion</p></router-link>
     </div>
   </div>
 </template>
