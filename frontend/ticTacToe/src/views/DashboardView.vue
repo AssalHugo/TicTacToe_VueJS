@@ -7,7 +7,7 @@ export default {
     return {
       user: null,
       games: [],
-      gamePlayersNames: {}
+      gamePlayersNames: JSON.parse(localStorage.getItem('gamePlayersNames')) || {}
     };
   },
   methods: {
@@ -42,14 +42,7 @@ export default {
             this.error = error;
           });
     },
-  },
-  async mounted() {
-    this.user = getUserIdentity();
-    this.games = await getGames();
-
-    for (const game of this.games) {
-      this.gamePlayersNames[game.id] = {};
-
+    async fetchPlayerNames(game) {
       if (game.player1) {
         const user1 = await getUser(game.player1);
         if (user1) {
@@ -62,6 +55,20 @@ export default {
         if (user2) {
           this.gamePlayersNames[game.id].player2Name = user2.username;
         }
+      }
+
+      localStorage.setItem('gamePlayersNames', JSON.stringify(this.gamePlayersNames));
+    }
+  },
+  async mounted() {
+    this.user = getUserIdentity();
+    this.games = await getGames();
+
+    for (const game of this.games) {
+      console.log(this.gamePlayersNames);
+      if (!this.gamePlayersNames[game.id] || !this.gamePlayersNames[game.id].player1Name || !this.gamePlayersNames[game.id].player2Name) {
+        this.gamePlayersNames[game.id] = {};
+        await this.fetchPlayerNames(game);
       }
     }
   }

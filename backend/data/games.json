@@ -38,45 +38,7 @@
     "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
   },
   {
-    "id": "751ab427-8f73-4fad-9461-a7cef505d1c9",
-    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
-    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
-    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
-    "board": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "status": "in_progress",
-    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
-  },
-  {
-    "id": "fa92c4e1-8f13-4317-8888-81b5cb2ed920",
-    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
-    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
-    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
-    "board": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "status": "in_progress",
-    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
-  },
-  {
-    "id": "6bff8919-2540-4f26-8365-b09fa176c111",
+    "id": "6cd01b0d-59db-4f04-b0f7-ad0c3528e40d",
     "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
     "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
     "player2": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
