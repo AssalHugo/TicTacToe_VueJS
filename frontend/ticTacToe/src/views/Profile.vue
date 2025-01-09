@@ -8,6 +8,7 @@ export default {
     return {
       user: null,
       error: null,
+      message: null,
     };
   },
   methods: {
@@ -16,6 +17,7 @@ export default {
           .then((response) => {
             setToken(response.user.token);
             this.user = response.user;
+            this.message = "Profil mis à jour";
           })
           .catch((error) => {
             this.error = error;
@@ -48,7 +50,7 @@ export default {
           </div>
           <div class="mb-4">
             <label for="password" class="block text-gray-700 font-bold mb-2">Nouveau mot de passe</label>
-            <input type="password" id="password" v-model="user.password" required
+            <input type="password" id="password" required
                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"/>
           </div>
           <div class="mb-4">
@@ -58,6 +60,7 @@ export default {
             </button>
           </div>
           <div v-if="error" class="text-red-500 text-center">{{ error }}</div>
+          <div v-if="message" class="text-green-500 text-center">{{ message }}</div>
         </form>
       </div>
     </div>

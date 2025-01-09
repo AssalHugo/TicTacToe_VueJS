@@ -1,1 +1,97 @@
-[]
+[
+  {
+    "id": "9890336a-794a-493d-a3f2-be72c8b81f18",
+    "creator": "899e5b3f-8186-4153-b8b0-575f3c942384",
+    "player1": "899e5b3f-8186-4153-b8b0-575f3c942384",
+    "player2": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": "in_progress",
+    "currentPlayer": null
+  },
+  {
+    "id": "c6682600-f891-4c02-b4d6-d803b2f7c6e5",
+    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": "in_progress",
+    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
+  },
+  {
+    "id": "751ab427-8f73-4fad-9461-a7cef505d1c9",
+    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": "in_progress",
+    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
+  },
+  {
+    "id": "fa92c4e1-8f13-4317-8888-81b5cb2ed920",
+    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": "in_progress",
+    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
+  },
+  {
+    "id": "6bff8919-2540-4f26-8365-b09fa176c111",
+    "creator": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player1": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "player2": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1",
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": "in_progress",
+    "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
+  }
+]

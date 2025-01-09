@@ -1,4 +1,6 @@
-export {request, login, register, getUser, updateUser};
+import {removeToken} from "@/services/AuthProvider.js";
+
+export {request, login, register, getUser, updateUser, getGames, createGame, joinGame, deleteGame};
 const BASE_URL = 'http://localhost:3001';
 
 const request = async (
@@ -61,4 +63,20 @@ const getUser = (id) => {
 
 const updateUser = (username, password) => {
     return request(`/user`, 'PUT', {username, password});
+}
+
+const getGames = () => {
+    return request('/games');
+}
+
+const createGame = () => {
+    return request('/games', 'POST');
+}
+
+const joinGame = (gameId) => {
+    return request(`/games/${gameId}/join`, 'POST');
+}
+
+const deleteGame = (gameId) => {
+    return request(`/games/${gameId}`, 'DELETE');
 }
