@@ -1,6 +1,6 @@
 import {removeToken} from "@/services/AuthProvider.js";
 
-export {request, login, register, getUser, updateUser, getGames, createGame, joinGame, deleteGame};
+export {request, login, register, getUser, updateUser, getGames, createGame, joinGame, deleteGame, getGame, playGame};
 const BASE_URL = 'http://localhost:3001';
 
 const request = async (
@@ -79,4 +79,12 @@ const joinGame = (gameId) => {
 
 const deleteGame = (gameId) => {
     return request(`/games/${gameId}`, 'DELETE');
+}
+
+const getGame = (gameId) => {
+    return request(`/games/${gameId}`);
+}
+
+const playGame = (gameId, row, col) => {
+    return request(`/games/${gameId}/move/${row}/${col}`, 'POST');
 }

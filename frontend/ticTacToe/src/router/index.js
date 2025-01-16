@@ -3,6 +3,7 @@ import Register from '../views/Register.vue'
 import Login from '../views/LoginView.vue'
 import Dashboard from "@/views/DashboardView.vue";
 import Profile from "@/views/Profile.vue";
+import Game from "@/views/Game.vue";
 import {isAuthenticated} from "@/services/AuthProvider.js";
 
 const router = createRouter({
@@ -30,6 +31,12 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: Profile,
+            meta: {requiresAuth: true},
+        },
+        {
+            path: '/game/:id',
+            name: 'game',
+            component: Game,
             meta: {requiresAuth: true},
         }
     ],

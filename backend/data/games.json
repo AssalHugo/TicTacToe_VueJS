@@ -55,5 +55,25 @@
     ],
     "status": "in_progress",
     "currentPlayer": "ef14fa4b-4a85-40a7-9663-441d0ac91ee1"
+  },
+  {
+    "id": "13515290-86e5-432d-b708-6f15f86c9b04",
+    "creator": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "player1": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "player2": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+    "board": [
+      null,
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      null,
+      null,
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+      null,
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72"
+    ],
+    "status": "finished",
+    "currentPlayer": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+    "winner": "c2ef274f-6bec-418c-9c57-d670a79cf08a"
   }
 ]
