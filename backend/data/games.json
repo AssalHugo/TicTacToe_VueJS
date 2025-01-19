@@ -235,22 +235,43 @@
     "winner": "29fb22f7-cdc7-4e09-9072-f17970a8ff72"
   },
   {
-    "id": "2a6cedc8-f5c3-43df-a4bb-03ce3128fcb8",
+    "id": "95cc86d1-aabc-49eb-b19d-21aa9eb6104e",
     "creator": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
     "player1": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
-    "player2": null,
+    "player2": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
     "board": [
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
       null,
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
       null,
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72"
+    ],
+    "status": "finished",
+    "currentPlayer": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+    "winner": "c2ef274f-6bec-418c-9c57-d670a79cf08a"
+  },
+  {
+    "id": "aca2a826-e7f6-4301-b44a-3042aec3ce4c",
+    "creator": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+    "player1": "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+    "player2": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "board": [
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
       null,
-      null,
-      null,
-      null,
+      "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
+      "29fb22f7-cdc7-4e09-9072-f17970a8ff72",
       null,
       null,
       null
     ],
-    "status": "waiting",
-    "currentPlayer": "c2ef274f-6bec-418c-9c57-d670a79cf08a"
+    "status": "finished",
+    "currentPlayer": "c2ef274f-6bec-418c-9c57-d670a79cf08a",
+    "winner": "29fb22f7-cdc7-4e09-9072-f17970a8ff72"
   }
 ]

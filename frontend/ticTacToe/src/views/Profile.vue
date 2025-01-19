@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       user: null,
+      password: '',
       error: null,
       message: null,
     };
@@ -42,7 +43,7 @@ export default {
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
       <div v-if="user">
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Modifier profil</h1>
-        <form @submit.prevent="handleUpdateUser(user.username, user.password)" class="space-y-4">
+        <form @submit.prevent="handleUpdateUser(user.username, password)" class="space-y-4">
           <div>
             <label for="username" class="block text-gray-700 font-bold mb-1">Nom d'utilisateur</label>
             <input type="text" id="username" v-model="user.username" required
@@ -50,7 +51,7 @@ export default {
           </div>
           <div>
             <label for="password" class="block text-gray-700 font-bold mb-1">Nouveau mot de passe</label>
-            <input type="password" id="password" required
+            <input type="password" id="password" v-model="password" required
                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"/>
           </div>
           <button type="submit"

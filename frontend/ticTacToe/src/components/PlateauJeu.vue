@@ -65,10 +65,16 @@ export default {
         this.currentPlayer = response.currentPlayer;
         this.winner = response.winner;
 
-        const player1 = await getUser(response.player1);
-        this.playerNames.player1 = player1.username;
-        const player2 = await getUser(response.player2);
-        this.playerNames.player2 = player2.username;
+        let player1 = null;
+        let player2 = null;
+        if (response.player1) {
+          player1 = await getUser(response.player1);
+          this.playerNames.player1 = player1.username;
+        }
+        if (response.player2) {
+          player2 = await getUser(response.player2);
+          this.playerNames.player2 = player2.username;
+        }
         this.$emit('update-game-info', {
           currentPlayer: this.currentPlayer,
           players: {
@@ -110,7 +116,8 @@ export default {
 <template>
 
   <div v-if="gameState">
-    <div v-if="winner || gameState === 'draw'" :class="{'victory-message': winner === userId, 'defeat-message': winner !== userId && winner !== null, 'draw-message': gameState === 'draw'}">
+    <div v-if="winner || gameState === 'draw'"
+         :class="{'victory-message': winner === userId, 'defeat-message': winner !== userId && winner !== null, 'draw-message': gameState === 'draw'}">
       <h2>{{ gameState === 'draw' ? 'Match nul' : winner === userId ? 'Vous avez gagné' : 'Vous avez perdu' }}</h2>
     </div>
 
@@ -134,6 +141,14 @@ export default {
 <style scoped>
 table {
   table-layout: fixed;
+}
+
+td {
+  border: 4px solid #000; /* Increase the border width to 4px */
+  padding: 4px;
+  text-align: center;
+  width: 64px;
+  height: 64px;
 }
 
 button {

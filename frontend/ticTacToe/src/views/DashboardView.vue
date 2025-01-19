@@ -58,7 +58,6 @@ export default {
       if (game.player1 && !this.gamePlayersNames[game.id].player1Name) {
         await getUser(game.player1)
             .then((response) => {
-              console.log(response);
               this.gamePlayersNames[game.id].player1Name = response.username;
             })
             .catch((error) => {
@@ -69,6 +68,16 @@ export default {
         await getUser(game.player2)
             .then((response) => {
               this.gamePlayersNames[game.id].player2Name = response.username;
+            })
+            .catch((error) => {
+              this.error = error;
+            });
+      }
+
+      if (game.creator && !this.gamePlayersNames[game.id].creatorName) {
+        await getUser(game.creator)
+            .then((response) => {
+              this.gamePlayersNames[game.id].creatorName = response.username;
             })
             .catch((error) => {
               this.error = error;
@@ -104,7 +113,7 @@ export default {
               class="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition">
             <div class="flex justify-between items-center">
               <div>
-                <b class="block text-lg text-gray-800">Partie {{ game.id }}</b>
+                <b class="block text-lg text-gray-800">Partie de {{ gamePlayersNames[game.id]?.creatorName }}</b>
                 <p class="text-sm text-gray-600">Statut: {{ game.status }}</p>
                 <p
                     v-if="gamePlayersNames[game.id]?.player1Name"
