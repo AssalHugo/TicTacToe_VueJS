@@ -1,5 +1,5 @@
 import {getUser} from "@/services/httpClient.js";
-export {fetchPlayerNames, fetchPlayerTour};
+export {fetchPlayerNames};
 
 const fetchPlayerNames = async (game, gamePlayersNames) => {
     if (game.player1) {
@@ -17,15 +17,4 @@ const fetchPlayerNames = async (game, gamePlayersNames) => {
     }
 
     localStorage.setItem('gamePlayersNames', JSON.stringify(gamePlayersNames));
-}
-
-const fetchPlayerTour = async (game, gamePlayersTour) => {
-    if (game.currentPlayer) {
-        const user = await getUser(game.currentPlayer);
-        if (user) {
-            gamePlayersTour[game.id].playerTour = user.username;
-        }
-    }
-
-    localStorage.setItem('gamePlayersTour', JSON.stringify(gamePlayersTour));
 }

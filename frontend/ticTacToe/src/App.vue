@@ -1,6 +1,6 @@
 <script setup>
-import {RouterLink, RouterView} from 'vue-router'
-import {getUserIdentity, removeToken} from "@/services/AuthProvider.js";
+import {RouterLink, RouterView} from 'vue-router';
+import {getUserIdentity, removeToken} from '@/services/AuthProvider.js';
 import {ref} from 'vue';
 
 const user = ref(getUserIdentity());
@@ -8,36 +8,66 @@ const user = ref(getUserIdentity());
 function handleLogout() {
   removeToken();
   user.value = undefined;
+
 }
 </script>
 
 <template>
-  <header class="bg-blue-500 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-    </div>
-
+  <header class="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-6 shadow-lg">
     <div v-if="user !== undefined" class="container mx-auto flex justify-between items-center">
-      <RouterLink to="/" class="text-xl font-bold">Tic Tac Toe</RouterLink>
-      <RouterLink to="/" class="text-xl font-bold">Dashboard</RouterLink>
-      <RouterLink to="/profile" class="text-xl font-bold">Profile</RouterLink>
-      <RouterLink to="/login">
-        <button @click="handleLogout"
-                class="w-40 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
-          Se déconnecter
-        </button>
+      <RouterLink to="/" class="text-2xl font-extrabold tracking-wide hover:underline">
+        Tic Tac Toe
       </RouterLink>
+
+      <nav class="flex space-x-4">
+        <RouterLink to="/profile" class="text-lg hover:text-blue-200 transition">Profile</RouterLink>
+        <RouterLink to="/login">
+          <button
+              @click="handleLogout"
+              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full shadow-md transition">
+            Logout
+          </button>
+        </RouterLink>
+      </nav>
     </div>
-    <div v-if="user === undefined" class="container mx-auto flex justify-between items-center">
-      <RouterLink to="/" class="text-xl font-bold">Tic Tac Toe</RouterLink>
-      <RouterLink to="/login" class="text-xl font-bold">Login</RouterLink>
-      <RouterLink to="/register" class="text-xl font-bold">Register</RouterLink>
+    <div v-else class="container mx-auto flex justify-between items-center">
+      <RouterLink to="/" class="text-2xl font-extrabold tracking-wide hover:underline">
+        Tic Tac Toe
+      </RouterLink>
+
+      <nav class="flex space-x-4">
+        <RouterLink to="/login" class="text-lg hover:text-blue-200 transition">Login</RouterLink>
+        <RouterLink to="/register"
+                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-md transition">
+          Register
+        </RouterLink>
+      </nav>
     </div>
   </header>
 
-  <div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <RouterView/>
-  </div>
+  <main class="py-8 bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4">
+      <RouterView/>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-4 text-center">
+    <p>&copy; 2025 Tic Tac Toe.</p>
+    <p>Hugo ASSAL</p>
+  </footer>
 </template>
 
 <style>
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+}
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Assure que le conteneur occupe toute la hauteur */
+  padding: 1rem; /* Ajoute un peu d'espace intérieur */
+}
+
 </style>

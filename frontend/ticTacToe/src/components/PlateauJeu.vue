@@ -1,5 +1,5 @@
 <script>
-import {getGame, playGame} from "@/services/httpClient.js";
+import {getGame, getUser, playGame} from "@/services/httpClient.js";
 import {getUserIdentity} from "@/services/AuthProvider.js";
 
 export default {
@@ -40,7 +40,7 @@ export default {
   methods: {
     startPolling() {
       if (this.polling) return;
-      this.polling = setInterval(this.fetchGameState, 10000);
+      this.polling = setInterval(this.fetchGameState, 5000);
     },
     stopPolling() {
       if (this.polling) {
@@ -64,9 +64,19 @@ export default {
         this.board = this.formatBoard(response.board);
         this.currentPlayer = response.currentPlayer;
         this.winner = response.winner;
-        this.playerNames.player1 = response.player1Name;
-        this.playerNames.player2 = response.player2Name;
-        if (this.winner) {
+
+        const player1 = await getUser(response.player1);
+        this.playerNames.player1 = player1.username;
+        const player2 = await getUser(response.player2);
+        this.playerNames.player2 = player2.username;
+        this.$emit('update-game-info', {
+          currentPlayer: this.currentPlayer,
+          players: {
+            player1: player1,
+            player2: player2,
+          }
+        });
+        if (this.winner || this.gameState === 'draw') {
           this.stopPolling();
         }
       } catch (error) {
@@ -75,7 +85,16 @@ export default {
     },
 
     async play(rowIndex, cellIndex) {
-      console.log("play", rowIndex, cellIndex);
+      //On vérifie si la case est vide
+      if (this.board[rowIndex][cellIndex] !== null) {
+        return;
+      }
+
+      //On vérifie si c'est au tour du joueur
+      if (this.currentPlayer !== this.userId) {
+        return;
+      }
+
       try {
         await playGame(this.gameId, rowIndex, cellIndex);
         await this.fetchGameState();
@@ -91,24 +110,17 @@ export default {
 <template>
 
   <div v-if="gameState">
-    {{ currentPlayer }} dzs
-    {{ userId }}
-    <div v-if="winner">
-      <h2>{{ winner === "draw" ? "Match nul" : winner === userId ? "Vous avez gagné" : "Vous avez perdu" }}</h2>
+    <div v-if="winner || gameState === 'draw'" :class="{'victory-message': winner === userId, 'defeat-message': winner !== userId && winner !== null, 'draw-message': gameState === 'draw'}">
+      <h2>{{ gameState === 'draw' ? 'Match nul' : winner === userId ? 'Vous avez gagné' : 'Vous avez perdu' }}</h2>
     </div>
 
-    <div v-else>
-      <h2>{{ currentPlayer === userId ? "À vous de jouer" : "À l'adversaire de jouer" }}</h2>
-    </div>
-    <table class="w-full border-collapse border border-gray-300 bg-blue-200">
+    <table class="table-auto mx-auto w-64 h-64">
       <tr v-for="(row, rowIndex) in board" :key="rowIndex">
-        <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="border p-4 text-center">
-          <button @click="play(rowIndex, cellIndex)" :disabled="cell !== null || winner || currentPlayer !== userId"
-                  class="w-full h-full">
-            <span v-if="cell === 1" class="text-4xl text-red-500">❌</span>
-            <span v-else-if="cell === 2" class="text-4xl text-blue-500">⭕</span>
-            cell {{ cell }}
-          </button>
+        <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="border p-4 text-center w-16 h-16">
+          <div @click="play(rowIndex, cellIndex)" class="flex items-center justify-center h-16">
+            <span v-if="cell === userId" class="text-4xl text-red-500">❌</span>
+            <span v-else-if="cell !== null" class="text-4xl text-blue-500">⭕</span>
+          </div>
         </td>
       </tr>
     </table>
@@ -127,5 +139,59 @@ table {
 button {
   width: 100%;
   height: 100%;
+}
+
+.victory-message {
+  text-align: center;
+  font-size: 2rem;
+  color: #4caf50;
+  animation: victory-animation 2s ease-in-out infinite;
+}
+
+.defeat-message {
+  text-align: center;
+  font-size: 2rem;
+  color: #f44336;
+  animation: defeat-animation 2s ease-in-out infinite;
+}
+
+.draw-message {
+  text-align: center;
+  font-size: 2rem;
+  color: #ff9800;
+  animation: draw-animation 2s ease-in-out infinite;
+}
+
+@keyframes victory-animation {
+  0%, 100% {
+    transform: scale(1);
+    color: #4caf50;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ffeb3b;
+  }
+}
+
+@keyframes defeat-animation {
+  0%, 100% {
+    transform: scale(1);
+    color: #f44336;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ff5722;
+  }
+}
+
+@keyframes draw-animation {
+  0%, 100% {
+    transform: scale(1);
+    color: #ff9800;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ffc107;
+  }
 }
 </style>
